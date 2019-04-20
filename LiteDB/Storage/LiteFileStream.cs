@@ -94,12 +94,9 @@ namespace LiteDB
 
             if (!_disposed)
             {
-                if (disposing)
+                if (this.CanWrite)
                 {
-                    if (this.CanWrite)
-                    {
-                        this.Flush();
-                    }
+                    this.Flush();
                 }
                 _disposed = true;
             }

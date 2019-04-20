@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -46,28 +46,28 @@ namespace LiteDB
         // direct bson types
         private HashSet<Type> _bsonTypes = new HashSet<Type>
         {
-            typeof(String),
-            typeof(Int32),
-            typeof(Int64),
-            typeof(Boolean),
+            typeof(string),
+            typeof(int),
+            typeof(long),
+            typeof(bool),
             typeof(Guid),
             typeof(DateTime),
-            typeof(Byte[]),
+            typeof(byte[]),
             typeof(ObjectId),
-            typeof(Double),
-            typeof(Decimal)
+            typeof(double),
+            typeof(decimal)
         };
 
         // simple convert types
         private HashSet<Type> _basicTypes = new HashSet<Type>
         {
-            typeof(Int16),
-            typeof(UInt16),
-            typeof(UInt32),
-            typeof(Single),
-            typeof(Char),
-            typeof(Byte),
-            typeof(SByte)
+            typeof(short),
+            typeof(ushort),
+            typeof(uint),
+            typeof(float),
+            typeof(char),
+            typeof(byte),
+            typeof(sbyte)
         };
 
         #endregion
@@ -112,9 +112,9 @@ namespace LiteDB
             }
 
             // special cast to UInt64 to Int64
-            else if (type == typeof(UInt64))
+            else if (type == typeof(ulong))
             {
-                return unchecked((UInt64)((Int64)value.RawValue));
+                return unchecked((ulong)((long)value.RawValue));
             }
 
             // enum value is an int

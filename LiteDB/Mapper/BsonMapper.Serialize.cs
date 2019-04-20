@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,36 +55,36 @@ namespace LiteDB
                 }
             }
             // basic Bson data types (cast datatype for better performance optimization)
-            else if (obj is Int32) return new BsonValue((Int32)obj);
-            else if (obj is Int64) return new BsonValue((Int64)obj);
-            else if (obj is Double) return new BsonValue((Double)obj);
-            else if (obj is Decimal) return new BsonValue((Decimal)obj);
-            else if (obj is Byte[]) return new BsonValue((Byte[])obj);
+            else if (obj is int) return new BsonValue((int)obj);
+            else if (obj is long) return new BsonValue((long)obj);
+            else if (obj is double) return new BsonValue((double)obj);
+            else if (obj is decimal) return new BsonValue((decimal)obj);
+            else if (obj is byte[]) return new BsonValue((byte[])obj);
             else if (obj is ObjectId) return new BsonValue((ObjectId)obj);
             else if (obj is Guid) return new BsonValue((Guid)obj);
-            else if (obj is Boolean) return new BsonValue((Boolean)obj);
+            else if (obj is bool) return new BsonValue((bool)obj);
             else if (obj is DateTime) return new BsonValue((DateTime)obj);
             // basic .net type to convert to bson
             else if (obj is Int16 || obj is UInt16 || obj is Byte || obj is SByte)
             {
                 return new BsonValue(Convert.ToInt32(obj));
             }
-            else if (obj is UInt32)
+            else if (obj is uint)
             {
                 return new BsonValue(Convert.ToInt64(obj));
             }
-            else if (obj is UInt64)
+            else if (obj is ulong)
             {
-                var ulng = ((UInt64)obj);
-                var lng = unchecked((Int64)ulng);
+                var ulng = ((ulong)obj);
+                var lng = unchecked((long)ulng);
 
                 return new BsonValue(lng);
             }
-            else if (obj is Single)
+            else if (obj is float)
             {
                 return new BsonValue(Convert.ToDouble(obj));
             }
-            else if (obj is Char || obj is Enum)
+            else if (obj is char || obj is Enum)
             {
                 return new BsonValue(obj.ToString());
             }
